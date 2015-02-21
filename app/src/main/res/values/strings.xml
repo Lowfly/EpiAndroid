@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Epiandroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">guitte_a</string>
+    <string name="password">password</string>
+    <string name="connect_button">Connection</string>
+
+    <string name="title_activity_general">GeneralActivity</string>
+    <string name="title_section1">Profil</string>
+    <string name="title_section2">Planning</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="urlAPI">https://epitech-api.herokuapp.com/</string>
+</resources>
