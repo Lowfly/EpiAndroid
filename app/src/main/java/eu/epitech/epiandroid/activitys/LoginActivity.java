@@ -53,6 +53,9 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                Toast.makeText(getBaseContext(), "Impossible de se connecter!", Toast.LENGTH_LONG).show();
+                LoginFormView.setVisibility(View.VISIBLE);
+                ProgressView.setVisibility(View.INVISIBLE);
             }
         };
 

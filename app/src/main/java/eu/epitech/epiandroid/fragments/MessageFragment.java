@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,9 +53,9 @@ public class MessageFragment extends Fragment {
 
     public   View       _view;
 
-    private  TextView   title;
-    private  TextView   logTime;
-    private  TextView   logTime2;
+    private  TextView   user;
+    private  TextView   date;
+    private  TextView   content;
     private Button      back;
     private  MessagesModel message;
     private FragmentManager manager;
@@ -69,8 +70,28 @@ public class MessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.fragment_message, container, false);
         back = (Button) _view.findViewById(R.id.button4);
-        title = (TextView) _view.findViewById(R.id.title);
-        logTime = (TextView) _view.findViewById(R.id.logTime);
+        user = (TextView) _view.findViewById(R.id.textUser);
+        date = (TextView) _view.findViewById(R.id.textDate);
+        content = (TextView) _view.findViewById(R.id.textContent);
+        content.setMovementMethod(new ScrollingMovementMethod());
+
+
+
+        try {
+            user.setText(Html.fromHtml(message.getUser()));
+
+        }
+        catch (Exception e){}
+        try {
+            date.setText(Html.fromHtml(message.getDate()));
+
+
+        }
+        catch (Exception e){}
+        try {
+            content.setText(Html.fromHtml(message.getContent()));
+        }
+        catch (Exception e){}
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -162,17 +162,12 @@ public class ProfilFragment extends Fragment {
                 fragment = MessageFragment.newInstance((MessagesModel) o, manager);
                 manager.beginTransaction()
                         .replace(R.id.container, fragment)
+                        .addToBackStack(null)
                         .commit();
             }
         });
 
 
-        if (listview == null) {
-         Log.d("NULL1", "NULL1");
-        }
-        if (title == null) {
-            Log.d("NULL", "NULL");
-        }
         infosView.setVisibility(View.VISIBLE);
         progressView.setVisibility(View.VISIBLE);
 

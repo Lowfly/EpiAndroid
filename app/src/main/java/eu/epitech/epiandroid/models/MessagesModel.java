@@ -1,5 +1,6 @@
 package eu.epitech.epiandroid.models;
 
+import android.text.Html;
 import android.text.Spanned;
 
 import org.json.JSONArray;
@@ -53,6 +54,6 @@ public class MessagesModel {
 
     @Override
     public String toString() {
-        return this.title;
+        return Html.fromHtml(this.title).toString();
     }
 }

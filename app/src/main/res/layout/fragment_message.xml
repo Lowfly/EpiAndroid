@@ -33,8 +33,9 @@
             android:layout_height="311dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textContent"
-            android:layout_gravity="center" />
-
+            android:layout_gravity="center"
+            android:maxLines = "20"
+            android:scrollbars = "vertical"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
