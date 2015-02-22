@@ -78,7 +78,7 @@ public class HomeActivity extends ActionBarActivity
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
-                fragment = ProfilFragment.newInstance(connectModel);
+                fragment = ProfilFragment.newInstance(connectModel, fragmentManager);
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
@@ -92,6 +92,7 @@ public class HomeActivity extends ActionBarActivity
                 break;
         }
         fragmentManager.beginTransaction()
+                .addToBackStack(null)
                 .replace(R.id.container, fragment)
                 .commit();
     }

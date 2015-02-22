@@ -1,15 +1,19 @@
 package eu.epitech.epiandroid.fragments;
 
+import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -52,10 +56,11 @@ public class ProfilFragment extends Fragment {
     private  TextView   title;
     private  TextView   logTime;
 
-    private  ListView listview;
+    public  ListView listview;
     private  ImageView  profilPicture;
     private  Bitmap     bitmap;
 
+    FragmentManager manager;
 
 
     private APIService api;
@@ -114,10 +119,8 @@ public class ProfilFragment extends Fragment {
                     i++;
                 }
 
-                for(MessagesModel message : messages) {
-                    Log.d("Message : " , message.getTitle());
-                }
-
+                ArrayAdapter<MessagesModel> adapter = new ArrayAdapter<MessagesModel>(_view .getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, messages);
+                listview.setAdapter(adapter);
 
             }
             catch (Exception e) {
@@ -130,9 +133,10 @@ public class ProfilFragment extends Fragment {
         }
     };
 
-    public static ProfilFragment newInstance(ConnexionModel connectModel) {
+    public static ProfilFragment newInstance(ConnexionModel connectModel, FragmentManager fragmentManager) {
         ProfilFragment af = new ProfilFragment();
         af.connectModel = connectModel;
+        af.manager = fragmentManager;
         return (af);
     }
 
@@ -145,27 +149,32 @@ public class ProfilFragment extends Fragment {
         profilPicture = (ImageView) _view.findViewById(R.id.profilpicture);
         title = (TextView) _view.findViewById(R.id.title);
         logTime = (TextView) _view.findViewById(R.id.logTime);
+        listview = (ListView) infosView.findViewById(R.id.listMessage);
+        listview.setClickable(true);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+                Object o = listview.getItemAtPosition(position);
+
+                Fragment fragment =  null;
+                fragment = MessageFragment.newInstance((MessagesModel) o, manager);
+                manager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
+            }
+        });
+
+
+        if (listview == null) {
+         Log.d("NULL1", "NULL1");
+        }
+        if (title == null) {
+            Log.d("NULL", "NULL");
+        }
         infosView.setVisibility(View.VISIBLE);
         progressView.setVisibility(View.VISIBLE);
-
-        listview = (ListView) _view.findViewById(R.id.listMessage);
-
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
-
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-
-        Log.d("LOL", list.toString());
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(_view.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, list);
-        listview.setAdapter(adapter);
 
         api = new APIService();
         api.initialize("http://epitech-api.herokuapp.com/");
@@ -185,4 +194,7 @@ public class ProfilFragment extends Fragment {
         }
         return _view;
     }
+
+
+
 }
