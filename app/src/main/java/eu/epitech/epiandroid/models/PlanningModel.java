@@ -11,7 +11,16 @@ public class PlanningModel {
     private String module;
     private String date;
     private String validate;
+    private String needToken;
+    private String sessionToken;
 
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
+    }
 
     private String scolaryear;
     private String codemodule;
@@ -19,6 +28,14 @@ public class PlanningModel {
     private String codeacti;
     private String codeevent;
     private String tokenvalidationcode;
+
+    public String getNeedToken() {
+        return needToken;
+    }
+
+    public void setNeedToken(String needToken) {
+        this.needToken = needToken;
+    }
 
     public String getModule() {
         return module;

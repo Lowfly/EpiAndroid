@@ -64,7 +64,6 @@ public class PlanningFragment extends Fragment {
         public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
             super.onSuccess(statusCode, headers, response);
             try {
-              Log.d("JSOn", response.toString());
 
                 List<PlanningModel> events = new LinkedList<PlanningModel>();
 
@@ -77,7 +76,6 @@ public class PlanningFragment extends Fragment {
 
                     ObjTMP = response.getJSONObject(i);
 
-                    Log.d("obj",ObjTMP.toString());
                     try {
                         if (ObjTMP.getString("module_registered") == "true") {
                             PlanningModel ModelTMP = new PlanningModel();
@@ -86,12 +84,14 @@ public class PlanningFragment extends Fragment {
                             ModelTMP.setModule(ObjTMP.getString("titlemodule"));
                             ModelTMP.setDate(ObjTMP.getString("start"));
                             ModelTMP.setValidate(ObjTMP.getString("event_registered"));
+                            Log.d("beffore", ObjTMP.getString("event_registered").toString());
+                            ModelTMP.setNeedToken(ObjTMP.getString("allow_token"));
                             ModelTMP.setScolaryear(ObjTMP.getString("scolaryear"));
                             ModelTMP.setCodemodule(ObjTMP.getString("codemodule"));
                             ModelTMP.setCodeinstance(ObjTMP.getString("codeinstance"));
                             ModelTMP.setCodeacti(ObjTMP.getString("codeacti"));
                             ModelTMP.setCodeevent(ObjTMP.getString("codeevent"));
-
+                            ModelTMP.setSessionToken(connectModel.get_token());
                             events.add(ModelTMP);
                         }
                     }
@@ -99,21 +99,17 @@ public class PlanningFragment extends Fragment {
 
                     i++;
                 }
-                Log.d("lenght", "3");
 
-                Log.d("JSOn", response.toString());
 
                 ArrayAdapter<PlanningModel> adapter = new ArrayAdapter<PlanningModel>(_view .getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, events);
                 listview.setAdapter(adapter);
 
-                Log.d("JSOn", response.toString());
                 interval.setText(date_begin + "  " + date_end);
                 headerView.setVisibility(View.VISIBLE);
                 progressView.setVisibility(View.INVISIBLE);
                 listView.setVisibility(View.VISIBLE);
             }
             catch (Exception e) {
-                Log.d("error", e.getMessage());
 
             }
         }
@@ -177,7 +173,6 @@ public class PlanningFragment extends Fragment {
 
                 api = new APIService();
                 api.initialize("http://epitech-api.herokuapp.com/");
-                Log.d("planning", "planning");
 
                 try {
                     RequestParams requestParams = new RequestParams();
@@ -203,7 +198,6 @@ public class PlanningFragment extends Fragment {
 
                 api = new APIService();
                 api.initialize("http://epitech-api.herokuapp.com/");
-                Log.d("planning", "planning");
 
                 try {
                     RequestParams requestParams = new RequestParams();
