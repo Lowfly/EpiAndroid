@@ -17,8 +17,11 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import eu.epitech.epiandroid.R;
+import eu.epitech.epiandroid.fragments.MarksFragment;
+import eu.epitech.epiandroid.fragments.ModulesFragment;
 import eu.epitech.epiandroid.fragments.ProfilFragment;
 import eu.epitech.epiandroid.fragments.PlanningFragment;
+import eu.epitech.epiandroid.fragments.SusieFragment;
 import eu.epitech.epiandroid.models.ConnexionModel;
 
 
@@ -82,14 +85,23 @@ public class HomeActivity extends ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                fragment = PlanningFragment.newInstance(connectModel);
+                fragment = PlanningFragment.newInstance(connectModel, fragmentManager);
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                fragment = ModulesFragment.newInstance(connectModel);
                 break;
             case 4:
+                mTitle = getString(R.string.title_section6);
+                fragment = MarksFragment.newInstance(connectModel);
+                break;
+            case 5:
                 mTitle = getString(R.string.title_section4);
-               this.finish();
+                fragment = SusieFragment.newInstance(connectModel);
+                break;
+            case 6:
+                mTitle = getString(R.string.title_section5);
+                this.finish();
                 break;
         }
 

@@ -2,32 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-5cbd139ae588c9ac7e9e1eecc1d80758a616c9b9.jar" />
-    </item>
-    <item
-        jar="/Users/guitte_a/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-fa6c4b15433e03e72dd4df92dc51b4fe9004c64b.jar" />
-    </item>
-    <item
         jar="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
         <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/classes-1f2865195ab63343447369ac593ca7b5b45bd1cf.jar" />
-    </item>
-    <item
-        jar="/Users/guitte_a/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/gson-2.2.4-78e1349bb0ad5c7e15d2696144b9e1bddc6104c5.jar" />
     </item>
     <item
         jar="/Users/guitte_a/Development/EpiAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
@@ -49,6 +28,27 @@
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-dcf9f0683c87905042d754d77f2d2e8056986573.jar" />
+    </item>
+    <item
+        jar="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-5cbd139ae588c9ac7e9e1eecc1d80758a616c9b9.jar" />
+    </item>
+    <item
+        jar="/Users/guitte_a/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-fa6c4b15433e03e72dd4df92dc51b4fe9004c64b.jar" />
+    </item>
+    <item
+        jar="/Users/guitte_a/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/pre-dexed/debug/gson-2.2.4-78e1349bb0ad5c7e15d2696144b9e1bddc6104c5.jar" />
     </item>
     <item
         jar="/Users/guitte_a/Applications/EpiDroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"

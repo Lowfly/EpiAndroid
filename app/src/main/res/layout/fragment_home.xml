@@ -71,8 +71,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_toEndOf="@+id/section_label"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/mssageLayout"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">

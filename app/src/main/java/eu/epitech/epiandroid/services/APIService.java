@@ -62,10 +62,6 @@ public class APIService {
         if (requestParams == null) {
             requestParams = new RequestParams();
         }
-        Log.d("Request", "get");
-        Log.d("Request", section);
-        Log.d("Request", requestParams.toString());
-        Log.d("Request", BASE_URL + section);
         mClient.get(BASE_URL + section, requestParams, responseHandler);
         }
 
