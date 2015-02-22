@@ -88,13 +88,16 @@ public class HomeActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_section3);
                 break;
             case 4:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.title_section4);
+               this.finish();
                 break;
         }
-        fragmentManager.beginTransaction()
+
+        if (fragment != null)
+        {fragmentManager.beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.container, fragment)
-                .commit();
+                .commit();}
     }
 
     public void restoreActionBar() {
@@ -171,6 +174,10 @@ public class HomeActivity extends ActionBarActivity
             ((HomeActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
 }

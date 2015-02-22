@@ -35,16 +35,26 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textInterval"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/button2"
+            android:layout_toLeftOf="@+id/button3"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_toEndOf="@+id/button2" />
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/progressLayout"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/headerLayout"
-        android:layout_alignEnd="@+id/headerLayout"
-        android:id="@+id/progressLayout">
+        android:layout_alignParentStart="true">
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"
@@ -59,10 +69,10 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
+        android:id="@+id/listLayout"
+        android:layout_alignTop="@+id/progressBar3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/listLayout">
+        android:layout_alignParentStart="true">
 
         <ListView
             android:layout_width="wrap_content"

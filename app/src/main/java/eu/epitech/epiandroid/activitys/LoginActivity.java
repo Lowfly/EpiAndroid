@@ -44,7 +44,7 @@ public class LoginActivity extends ActionBarActivity {
                     Intent goHome = new Intent(LoginActivity.this, HomeActivity.class);
                     goHome.putExtra("token", connectModel.get_token());
                     goHome.putExtra("login", connectModel.get_login());
-                    startActivity(goHome);
+                    startActivityForResult(goHome, 1);
                 }
                 catch (Exception e) {
                 }

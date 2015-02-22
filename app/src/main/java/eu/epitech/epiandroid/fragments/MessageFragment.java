@@ -53,12 +53,12 @@ public class MessageFragment extends Fragment {
 
     public   View       _view;
 
-    private  TextView   user;
-    private  TextView   date;
-    private  TextView   content;
-    private Button      back;
-    private  MessagesModel message;
-    private FragmentManager manager;
+    private  TextView       user;
+    private  TextView       date;
+    private  TextView       content;
+    private  Button         back;
+    private  MessagesModel  message;
+    private  FragmentManager manager;
 
     public static MessageFragment newInstance(MessagesModel messageModel, FragmentManager fragmentManager) {
         MessageFragment af = new MessageFragment();
