@@ -253,7 +253,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Conçu par Antoine GUITTET, Jeremy MAIGNAN, Hakim EL BAKKALI", Toast.LENGTH_SHORT).show();
             return true;
         }
 

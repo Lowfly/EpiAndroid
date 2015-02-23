@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -48,7 +49,10 @@ public class PlanningFragment extends Fragment {
     private  ListView   listview;
     private Button      next;
     private Button      prev;
+    private  RadioButton    subscribe;
+    private  RadioButton    all;
     FragmentManager manager;
+    private boolean subscribed = false;
 
     private  APIService api;
     private  ConnexionModel connectModel;
@@ -77,14 +81,31 @@ public class PlanningFragment extends Fragment {
                     ObjTMP = response.getJSONObject(i);
 
                     try {
-                        if (ObjTMP.getString("module_registered") == "true") {
+                        if (subscribed == true) {
+                            if (ObjTMP.getString("module_registered") == "true") {
+                                PlanningModel ModelTMP = new PlanningModel();
+
+                                ModelTMP.setTitle(ObjTMP.getString("acti_title"));
+                                ModelTMP.setModule(ObjTMP.getString("titlemodule"));
+                                ModelTMP.setDate(ObjTMP.getString("start"));
+                                ModelTMP.setValidate(ObjTMP.getString("event_registered"));
+                                ModelTMP.setNeedToken(ObjTMP.getString("allow_token"));
+                                ModelTMP.setScolaryear(ObjTMP.getString("scolaryear"));
+                                ModelTMP.setCodemodule(ObjTMP.getString("codemodule"));
+                                ModelTMP.setCodeinstance(ObjTMP.getString("codeinstance"));
+                                ModelTMP.setCodeacti(ObjTMP.getString("codeacti"));
+                                ModelTMP.setCodeevent(ObjTMP.getString("codeevent"));
+                                ModelTMP.setSessionToken(connectModel.get_token());
+                                events.add(ModelTMP);
+                            }
+                        }
+                        else {
                             PlanningModel ModelTMP = new PlanningModel();
 
                             ModelTMP.setTitle(ObjTMP.getString("acti_title"));
                             ModelTMP.setModule(ObjTMP.getString("titlemodule"));
                             ModelTMP.setDate(ObjTMP.getString("start"));
                             ModelTMP.setValidate(ObjTMP.getString("event_registered"));
-                            Log.d("beffore", ObjTMP.getString("event_registered").toString());
                             ModelTMP.setNeedToken(ObjTMP.getString("allow_token"));
                             ModelTMP.setScolaryear(ObjTMP.getString("scolaryear"));
                             ModelTMP.setCodemodule(ObjTMP.getString("codemodule"));
@@ -93,6 +114,7 @@ public class PlanningFragment extends Fragment {
                             ModelTMP.setCodeevent(ObjTMP.getString("codeevent"));
                             ModelTMP.setSessionToken(connectModel.get_token());
                             events.add(ModelTMP);
+
                         }
                     }
                     catch (Exception e){}
@@ -126,6 +148,25 @@ public class PlanningFragment extends Fragment {
         af.connectModel = connectModel;
         af.manager = fragmentManager;
         return (af);
+    }
+
+    public void request()
+    {
+        progressView.setVisibility(View.VISIBLE);
+        listView.setVisibility(View.INVISIBLE);
+
+        api = new APIService();
+        api.initialize(getString(R.string.urlAPI));
+
+        try {
+            RequestParams requestParams = new RequestParams();
+            requestParams.add("token", connectModel.get_token());
+            requestParams.add("start", date_begin);
+            requestParams.add("end", date_end);
+            api.getRequest("planning", requestParams, responseHandler);
+        } catch (Exception e) {
+
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -170,19 +211,8 @@ public class PlanningFragment extends Fragment {
 
                 progressView.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.INVISIBLE);
+                request();
 
-                api = new APIService();
-                api.initialize("http://epitech-api.herokuapp.com/");
-
-                try {
-                    RequestParams requestParams = new RequestParams();
-                    requestParams.add("token", connectModel.get_token());
-                    requestParams.add("start", date_begin);
-                    requestParams.add("end", date_end);
-                    api.getRequest("planning", requestParams, responseHandler);
-                } catch (Exception e) {
-
-                }
             }
         });
         next = (Button)_view.findViewById(R.id.button3);
@@ -192,41 +222,29 @@ public class PlanningFragment extends Fragment {
                 date_begin = new SimpleDateFormat("yyyy-MM-dd").format(localCalendar.getTime());
                 localCalendar.add(Calendar.DATE, 6);
                 date_end = new SimpleDateFormat("yyyy-MM-dd").format(localCalendar.getTime());
+                request();
+            }
+        });
 
-                progressView.setVisibility(View.VISIBLE);
-                listView.setVisibility(View.INVISIBLE);
+        all = (RadioButton) _view.findViewById(R.id.radioButton4);
+        subscribe= (RadioButton) _view.findViewById(R.id.radioButton3);
 
-                api = new APIService();
-                api.initialize("http://epitech-api.herokuapp.com/");
-
-                try {
-                    RequestParams requestParams = new RequestParams();
-                    requestParams.add("token", connectModel.get_token());
-                    requestParams.add("start", date_begin);
-                    requestParams.add("end", date_end);
-                    api.getRequest("planning", requestParams, responseHandler);
-                } catch (Exception e) {
-
-                }
+        all.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                subscribe.setChecked(false);
+                subscribed = false;
+                request();
+            }
+        });
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                all.setChecked(false);
+                subscribed = true;
+                request();
             }
         });
         headerView.setVisibility(View.VISIBLE);
-        progressView.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.INVISIBLE);
-
-        api = new APIService();
-        api.initialize("http://epitech-api.herokuapp.com/");
-        Log.d("planning", "planning");
-
-        try {
-            RequestParams requestParams = new RequestParams();
-            requestParams.add("token", connectModel.get_token());
-            requestParams.add("start", date_begin);
-            requestParams.add("end", date_end);
-            api.getRequest("planning", requestParams, responseHandler);
-        } catch (Exception e) {
-
-        }
+        request();
         return _view;
     }
 }

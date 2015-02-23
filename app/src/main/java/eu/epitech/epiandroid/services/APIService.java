@@ -12,7 +12,6 @@ import java.io.UnsupportedEncodingException;
 
 public class APIService {
 
-    private static String mToken = null;
     private static String BASE_URL;
     private static int TIME_OUT = 5 * 1000;
 
@@ -53,7 +52,6 @@ public class APIService {
         if (requestParams == null) {
             requestParams = new RequestParams();
         }
-        requestParams.add("token", mToken);
         mClient.post(BASE_URL + section, requestParams, responseHandler);
     }
 

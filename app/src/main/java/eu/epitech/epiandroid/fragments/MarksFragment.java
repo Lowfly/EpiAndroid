@@ -115,7 +115,7 @@ public class MarksFragment extends Fragment {
         listView.setVisibility(View.INVISIBLE);
 
         api = new APIService();
-        api.initialize("http://epitech-api.herokuapp.com/");
+        api.initialize(getString(R.string.urlAPI));
 
         try {
             RequestParams requestParams = new RequestParams();

@@ -148,7 +148,7 @@ public class PlanningDetailsFragment extends Fragment {
                event.setTokenvalidationcode(fieldToken.getText().toString());
 
                 api = new APIService();
-                api.initialize("http://epitech-api.herokuapp.com/");
+                api.initialize(getString(R.string.urlAPI));
 
                 try {
                     RequestParams requestParams = new RequestParams();

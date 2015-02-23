@@ -71,10 +71,9 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listLayout"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/headerLayout"
-        android:layout_alignEnd="@+id/headerLayout">
+        android:layout_alignParentStart="true">
 
         <ListView
             android:layout_width="wrap_content"
@@ -83,7 +82,28 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="79dp" />
+            android:layout_marginTop="124dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modules inscrit"
+            android:id="@+id/radioButton3"
+            android:layout_marginTop="79dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tous les modules"
+            android:id="@+id/radioButton4"
+            android:layout_alignTop="@+id/radioButton3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:checked="true" />
     </RelativeLayout>
 
 </RelativeLayout>

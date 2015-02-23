@@ -57,7 +57,10 @@ public class ModulesModel {
 
     @Override
     public String toString() {
-        return(this.title + "  Grade : " + this.grade + "  Credits : " + this.credit);
+        if (grade == null) {
+            return (this.title + "   " + "  Credits : " + this.credit);
+        }
+        return (this.title + "  Grade : " + this.grade + "  Credits : " + this.credit);
     }
 }
 

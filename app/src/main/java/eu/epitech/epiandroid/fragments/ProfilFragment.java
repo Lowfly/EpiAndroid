@@ -172,7 +172,7 @@ public class ProfilFragment extends Fragment {
         progressView.setVisibility(View.VISIBLE);
 
         api = new APIService();
-        api.initialize("http://epitech-api.herokuapp.com/");
+        api.initialize(getString(R.string.urlAPI));
         try {
             RequestParams requestParams = new RequestParams();
             requestParams.add("token", connectModel.get_token());
